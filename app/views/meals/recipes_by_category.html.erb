@@ -1,0 +1,11 @@
+<!-- app/views/meals/recipes_by_category.html.erb -->
+
+<h1>Todas las Recetas de <%= @category %></h1>
+
+<ul>
+  <% @recipes.each do |recipe| %>
+    <li><%= recipe['strMeal'] %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Volver a las Categorías", categories_meals_path %>
