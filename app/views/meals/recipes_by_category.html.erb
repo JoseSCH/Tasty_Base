@@ -4,7 +4,7 @@
 
 <ul>
   <% @recipes.each do |recipe| %>
-    <li><%= recipe['strMeal'] %></li>
+    <li><%= link_to recipe['strMeal'], show_details_path(id: recipe['idMeal']) %></li>
   <% end %>
 </ul>
 
