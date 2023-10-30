@@ -1,0 +1,8 @@
+<h1><b>Bienvenido a Tasty Base!!!<b></h1>
+<% if @recipe %>
+    <%@recipe.each do |data|%>
+        <h2><%= data["strMeal"] %></h2>
+        <img src="<%= data["strMealThumb"] %>" alt="<%= data["strMeal"] %>">
+        <%= link_to "Detalles", show_details_path(id: data["idMeal"])%>
+    <% end %>
+<% end %>
