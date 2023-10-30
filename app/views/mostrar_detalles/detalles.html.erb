@@ -1,0 +1,26 @@
+<% if @recipe %>
+    <%@recipe.each do |data|%>
+        <h2><%= data["strMeal"] %></h2>
+        <img src="<%= data["strMealThumb"] %>" alt="<%= data["strMeal"] %>">
+        <h3>Categoria: <%= data["strCategory"] %></h3>
+        <h3>Origen: <%= data["strArea"] %></h3>
+        <table>
+            <tr>
+                <th>Ingredientes<th>
+            </tr>
+            <% for i in 1..20 %>
+                <% unless data["strIngredient#{i}"].empty? %>
+                    <tr>
+                        <td><%= data["strIngredient#{i}"] %></td>
+                        <td><%= data["strMeasure#{i}"] %></td>
+                    </tr>
+                <% else %>
+                    <% break %>
+                <% end %>
+            <% end %>
+        </table><br>
+        <h3>Instrucciones</h3>
+        <% #Para que muestre el texto correctamente. %>
+        <%= simple_format(data["strInstructions"]).gsub(/\n+/, "</br>").html_safe %>
+    <% end %>
+<% end %>
