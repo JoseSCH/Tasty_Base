@@ -10,7 +10,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
+  <%#Renderiza la barra de navegacion%>
+  <%= render partial: "partials/navbar" %>
+
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

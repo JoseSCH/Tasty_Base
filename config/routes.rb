@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  root 'index#index'
+  #Rutas para usuarios.
+  devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -12,6 +15,8 @@ Rails.application.routes.draw do
     end
   end
 
+  #Para mostrar el detalle de una receta.
+  get 'mostrar_detalles/detalles', as: 'show_details'
 
   # Defines the root path route ("/")
   # root "posts#index"
