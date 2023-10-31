@@ -20,7 +20,19 @@
             <% end %>
         </table><br>
         <h3>Instrucciones</h3>
-        <% #Para que muestre el texto correctamente. %>
-        <%= simple_format(data["strInstructions"]).gsub(/\n+/, "</br>").html_safe %>
+        <%#Para que muestre el texto correctamente. %>
+        <%= simple_format(data["strInstructions"]).gsub(/\n+/, "</br>").html_safe %><br>
+
+        <%# funcionalidad con botnes de agregar y borrar. solo si se esta loggeado%>
+
+        <% if signed_in? %>
+            <% if @existe %>
+                <%= button_to 'Añadir a lista', guardar_item_path, params: {user_list: {user_id: current_user.id, idMeal: data["idMeal"], recipe_name: data["strMeal"]}}, disabled: true %>
+                <%= button_to 'Eliminar de la lista', eliminar_item_path, params: {idMeal: data["idMeal"]}, disabled: false, data: { turbo_method: :delete, turbo_confirm: '¿Estás seguro?' } %>
+            <% else %>
+                <%= button_to 'Añadir a lista', guardar_item_path, params: {user_list: {user_id: current_user.id, idMeal: data["idMeal"], recipe_name: data["strMeal"]}}, disabled: false %>
+                <%= button_to 'Eliminar de la lista', eliminar_item_path, params: {idMeal: data["idMeal"]}, disabled: true, data: { turbo_method: :delete, turbo_confirm: '¿Estás seguro?' } %>
+            <% end %>
+        <% end %>
     <% end %>
 <% end %>

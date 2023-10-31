@@ -1,0 +1,14 @@
+<h1>Lista de <%= current_user.email %></h1>
+<% if not @user_list.empty? %>
+    <table>
+        <% @user_list.each do |item| %>
+            <tr>
+                <td><%= item.recipe_name %></td>
+                <td><%= button_to "Detalles", show_details_path, params: {id: item.idMeal}, method: :get %></td>
+                <td><%= button_to 'Eliminar', eliminar_item_from_path(idMeal: item.idMeal), data: { turbo_method: :delete, turbo_confirm: '¿Estás seguro?' }, method: :delete %></td>
+            <tr/>
+        <% end %>
+    </table>
+<% else %>
+    <h1>Esta algo desierto por estos lares...<h1>
+<% end %>

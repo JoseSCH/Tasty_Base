@@ -21,6 +21,16 @@ Rails.application.routes.draw do
   #Para mostrar el detalle de una receta.
   get 'mostrar_detalles/detalles', as: 'show_details'
 
+  #Para listar las recetas que el usuario haya guardado.
+  get 'mi_lista/lista', as: 'mi_lista'
+
+  #Para realizar la peticion post para guardar y eliminar un item en lista.
+  post 'mi_lista/create', as: 'guardar_item'
+  post 'mi_lista/delete', to: 'mi_lista#delete', via: :delete, as: 'eliminar_item'
+
+  #Eliminar desde al vista de la lista de cada usuario.
+  delete 'mi_lista/delete_from_my_list', to: 'mi_lista#delete_from_my_list', via: :delete, as: 'eliminar_item_from'
+
   # Defines the root path route ("/")
   # root "posts#index"
 end

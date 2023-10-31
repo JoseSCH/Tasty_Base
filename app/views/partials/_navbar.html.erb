@@ -4,10 +4,22 @@
   </a>
   <%= link_to "Inicio", root_path %>
   <%= link_to "Categorias", categories_meals_path %>
+
   <%= link_to "Recetas aleatorias", aleatorias_path %>
 
   <%= form_tag(buscar_path, method: :get, class: "search-form") do %>
     <%= text_field_tag :query, params[:query], placeholder: "Buscar recetas..." %>
     <%= submit_tag "Buscar" %>
   <% end %>
+  
+  <% if signed_in? %>
+    <%= link_to "Mi Lista", mi_lista_path %>
+    <%= link_to "Salir", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: '¿Esta seguro?' } %>
+    <%= link_to "Editar Cuenta", edit_user_registration_path %>
+    <%= link_to "Eliminar cuenta", registration_path(current_user), data: { turbo_method: :delete, turbo_confirm: "¿Está seguro que desea eliminar la cuenta?" } %>
+  <% else %>
+    <%= link_to "Registrarse", new_user_registration_path %>
+    <%= link_to "Ingresar", new_user_session_path %>
+  <% end %>
 </div>
+
