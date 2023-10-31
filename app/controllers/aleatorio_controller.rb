@@ -3,7 +3,7 @@ class AleatorioController < ApplicationController
     require 'json'      
     def recetas_aleatorias
           # Genera 10 IDs de recetas aleatorias en el rango especificado
-          random_ids = (52810..52999).to_a.sample(5)
+          random_ids = (52764..52999).to_a.sample(5)
       
           # Realiza solicitudes a la API para obtener los detalles de las recetas aleatorias
           @recetas_aleatorias = []
