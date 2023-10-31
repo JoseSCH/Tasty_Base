@@ -11,5 +11,10 @@ class MostrarDetallesController < ApplicationController
 
     # Convierte la respuesta JSON en un objeto Ruby
     @recipe = JSON.parse(response)['meals']
+
+    #Verifica si el cliente ha agregado esa receta a su lista.
+    if signed_in?
+      @existe = UserList.exists?(user_id: current_user.id, idMeal: id)
+    end
   end
 end
