@@ -4,4 +4,10 @@
   </a>
   <%= link_to "Inicio", root_path %>
   <%= link_to "Categorias", categories_meals_path %>
+  <%= link_to "Recetas aleatorias", aleatorias_path %>
+
+  <%= form_tag(buscar_path, method: :get, class: "search-form") do %>
+    <%= text_field_tag :query, params[:query], placeholder: "Buscar recetas..." %>
+    <%= submit_tag "Buscar" %>
+  <% end %>
 </div>

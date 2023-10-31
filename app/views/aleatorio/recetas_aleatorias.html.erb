@@ -1,0 +1,11 @@
+<h1>Recetas Aleatorias</h1>
+
+<ul>
+  <% @recetas_aleatorias.each do |receta| %>
+    <li>
+      <h2><%= receta['strMeal'] %></h2>
+      <%= image_tag(receta['strMealThumb'], alt: receta['strMeal']) %>
+      <%= link_to "Detalles", show_details_path(id: receta["idMeal"])%>
+    </li>
+  <% end %>
+</ul>

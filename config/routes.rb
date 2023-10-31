@@ -14,7 +14,10 @@ Rails.application.routes.draw do
       get 'recipes/:category', action: 'recipes_by_category', as: 'recipes_by_category'
     end
   end
-
+  #Para mostrar 5 recetas aleatorias
+  get 'aleatorio/recetas_aleatorias', to: 'aleatorio#recetas_aleatorias', as: 'aleatorias'
+  #Para buscar recetas
+  get 'buscar', to: 'busqueda#buscar', as: 'buscar'
   #Para mostrar el detalle de una receta.
   get 'mostrar_detalles/detalles', as: 'show_details'
 

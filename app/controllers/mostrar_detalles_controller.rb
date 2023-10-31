@@ -1,4 +1,6 @@
 class MostrarDetallesController < ApplicationController
+  require 'net/http'
+
   def detalles
     #Obtener la receta de la cual se quiere mostrar los detalles mediante el ID.
 
