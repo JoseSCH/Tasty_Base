@@ -44,6 +44,9 @@ gem "bootsnap", require: false
 #Para trabajar con usuarios.
 gem "devise"
 
+#Para hacer posible la PDFizacion.
+gem "wicked_pdf"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
