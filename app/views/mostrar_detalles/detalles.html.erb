@@ -33,7 +33,7 @@
                 <%= button_to 'Añadir a lista', guardar_item_path, params: {user_list: {user_id: current_user.id, idMeal: data["idMeal"], recipe_name: data["strMeal"]}}, disabled: false %>
                 <%= button_to 'Eliminar de la lista', eliminar_item_path, params: {idMeal: data["idMeal"]}, disabled: true, data: { turbo_method: :delete, turbo_confirm: '¿Estás seguro?' } %>
             <% end %>
-            <%= button_to 'Descargar receta', pdfizador_path(format: :pdf), params: {id: data["idMeal"]}, method: :get, download: true, target: '_blank' %>
+            <%= button_to 'Descargar receta', pdfizador_path(format: :pdf), params: {id: data["idMeal"]}, method: :get, download: true %>
         <% end %>
     <% end %>
 <% end %>
