@@ -4,6 +4,7 @@ ruby "3.0.2"
 
 gem 'sass-rails'
 gem 'bootstrap-sass'
+gem 'font-awesome-rails'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.1"
 

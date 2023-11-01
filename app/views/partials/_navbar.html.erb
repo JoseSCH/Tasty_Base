@@ -21,6 +21,7 @@
       <%= link_to "Eliminar cuenta", registration_path(current_user), data: { turbo_method: :delete, turbo_confirm: "¿Está seguro que desea eliminar la cuenta?" }, class: "btn btn-link navbar-link nav-link" %>
     <% else %>
       <%= link_to "Registrarse", new_user_registration_path, class: "btn btn-link navbar-link nav-link" %>
+      
       <%= link_to "Ingresar", new_user_session_path, class: "btn btn-link navbar-link nav-link" %>
     <% end %>
   </div>

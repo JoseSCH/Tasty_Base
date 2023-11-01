@@ -1,18 +1,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/// Estilo para enlaces de navegación
-    .nav-link
+// Estilo para enlaces de navegación y botones
+.nav-link, .btn
   text-decoration: none
-  padding: 8px 16px
-  border: 1px solid #ccc
-  border-radius: 4px
-  color: #fff
-  background-color: #333
+  height: 40px   // Ajusta la altura según tus necesidades
+  padding: 0 20px   // Ajusta el padding para el ancho del botón
   transition: background-color 0.3s
+  font-family: "Comic Sans MS", cursive   // Aplicar Comic Sans con respaldo cursive
+  font-size: 20px
 
   &:hover
-    background-color: #555
+    background-color: #9e9d9d
 
 .btn.btn-light.nav-link
   background-color: #fff
