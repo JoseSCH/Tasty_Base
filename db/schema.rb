@@ -14,6 +14,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_30_213928) do
   create_table "user_lists", force: :cascade do |t|
     t.string "idMeal"
     t.string "recipe_name"
+    t.string "imgPreview"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

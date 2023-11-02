@@ -27,11 +27,9 @@
 
         <% if signed_in? %>
             <% if @existe %>
-                <%= button_to 'Añadir a lista', guardar_item_path, params: {user_list: {user_id: current_user.id, idMeal: data["idMeal"], recipe_name: data["strMeal"]}}, disabled: true %>
                 <%= button_to 'Eliminar de la lista', eliminar_item_path, params: {idMeal: data["idMeal"]}, disabled: false, data: { turbo_method: :delete, turbo_confirm: '¿Estás seguro?' } %>
             <% else %>
-                <%= button_to 'Añadir a lista', guardar_item_path, params: {user_list: {user_id: current_user.id, idMeal: data["idMeal"], recipe_name: data["strMeal"]}}, disabled: false %>
-                <%= button_to 'Eliminar de la lista', eliminar_item_path, params: {idMeal: data["idMeal"]}, disabled: true, data: { turbo_method: :delete, turbo_confirm: '¿Estás seguro?' } %>
+                <%= button_to 'Añadir a lista', guardar_item_path, params: {user_list: {user_id: current_user.id, idMeal: data["idMeal"], recipe_name: data["strMeal"], imgPreview: data["strMealThumb"] + "/preview"}}, disabled: false %>
             <% end %>
             <%= button_to 'Descargar receta', pdfizador_path(format: :pdf), params: {id: data["idMeal"]}, method: :get, download: true %>
         <% end %>

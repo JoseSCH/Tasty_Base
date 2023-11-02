@@ -3,9 +3,10 @@
     <table>
         <% @user_list.each do |item| %>
             <tr>
+                <td><%= image_tag(item.imgPreview) %></td>
                 <td><%= item.recipe_name %></td>
                 <td><%= button_to "Detalles", show_details_path, params: {id: item.idMeal}, method: :get %></td>
-                <td><%= button_to 'Eliminar', eliminar_item_from_path(idMeal: item.idMeal), data: { turbo_method: :delete, turbo_confirm: '¿Estás seguro?' }, method: :delete %></td>
+                <td><%= button_to 'Eliminar', eliminar_item_from_path(idMeal: item.idMeal), data: { turbo_method: :delete, turbo_confirm: '¿seguro?' }, method: :delete %></td>
                 <td><%= button_to 'Descargar receta', pdfizador_path(format: :pdf), params: {id: item.idMeal}, method: :get, download: true %></td>
             <tr/>
         <% end %>
