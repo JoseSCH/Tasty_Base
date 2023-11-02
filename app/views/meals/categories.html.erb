@@ -3,15 +3,12 @@
 <h1>Categorías de Recetas</h1>
 
 <ul>
-  <% @recipes_by_category.each do |category, recipes| %>
+  <% @categorias.each do |data| %>
     <li>
-      <h2><%= category %></h2>
-      <ul>
-        <% recipes.each do |recipe| %>
-          <li><%= link_to recipe['strMeal'], show_details_path(id: recipe['idMeal']) %></li>
-        <% end %>
-      </ul>
-      <%= link_to "Ver todas las recetas de #{category}", recipes_by_category_meals_path(category) %>
+      <h2><%= data["strCategory"] %></h2>
+      <%= image_tag(data["strCategoryThumb"]) %>
+      <%= simple_format(data["strCategoryDescription"]).gsub(/\n+/, "</br>").html_safe %>
+      <%= link_to "Ver todas las recetas", recipes_by_category_meals_path(category: data["strCategory"]) %>
     </li>
   <% end %>
 </ul>
