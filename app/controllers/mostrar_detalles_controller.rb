@@ -7,6 +7,7 @@ class MostrarDetallesController < ApplicationController
     id = params[:id]
     #Construir la URL.
     api_url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=#{id}"
+    @ingredientesImg = "https://www.themealdb.com/images/ingredients/"
 
     # Realiza la solicitud a la API
     response = Net::HTTP.get(URI(api_url))
