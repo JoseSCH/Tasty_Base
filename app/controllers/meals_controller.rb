@@ -3,14 +3,18 @@ class MealsController < ApplicationController
   require 'json'
 
   def categories
-    # Construye la URL de la API para obtener recetas por categoría
-    api_url = "https://www.themealdb.com/api/json/v1/1/categories.php"
+    # Usa la caché para almacenar/recuperar los resultados
+    @categorias = Rails.cache.fetch("Categorias", expires_in: 1.hour) do
 
-    # Realiza la solicitud a la API
-    response = Net::HTTP.get(URI(api_url))
+      # Construye la URL de la API para obtener recetas por categoría
+      api_url = "https://www.themealdb.com/api/json/v1/1/categories.php"
 
-    # Convierte la respuesta JSON en un objeto Ruby
-    @categorias = JSON.parse(response)['categories']
+      # Realiza la solicitud a la API
+      response = Net::HTTP.get(URI(api_url))
+
+      # Convierte la respuesta JSON en un objeto Ruby
+      JSON.parse(response)['categories']
+    end
   end
 
   def recipes_by_category
