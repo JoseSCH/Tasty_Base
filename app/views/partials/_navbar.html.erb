@@ -8,7 +8,7 @@
   <%= link_to "Recetas aleatorias", aleatorias_path %>
 
   <%= form_tag(buscar_path, method: :get, class: "search-form") do %>
-    <%= text_field_tag :query, params[:query], placeholder: "Buscar recetas..." %>
+    <%= text_field_tag :query, params[:query], placeholder: "Buscar recetas...", required: true %>
     <%= submit_tag "Buscar" %>
   <% end %>
   

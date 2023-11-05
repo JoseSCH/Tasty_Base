@@ -1,5 +1,6 @@
-<% if @recipe %>
+<% if not @recipe.empty? %>
     <%@recipe.each do |data|%>
+        <% provide(:titulo, data["strMeal"]) %>
         <h2><%= data["strMeal"] %></h2>
         <img src="<%= data["strMealThumb"] %>" alt="<%= data["strMeal"] %>">
         <h3>Categoria: <%= data["strCategory"] %></h3>
@@ -9,7 +10,7 @@
                 <th>Ingredientes<th>
             </tr>
             <% for i in 1..20 %>
-                <% unless data["strIngredient#{i}"].empty? %>
+                <% if data["strIngredient#{i}"] != "" and data["strIngredient#{i}"] != nil %>
                     <tr>
                         <td><%= image_tag(@ingredientesImg + data["strIngredient#{i}"] + "-Small.png") %></td>
                         <td><%= data["strIngredient#{i}"] %></td>
@@ -35,4 +36,6 @@
             <%= button_to 'Descargar receta', pdfizador_path(format: :pdf), params: {id: data["idMeal"]}, method: :get, download: true %>
         <% end %>
     <% end %>
+<% else %>
+    <h1>Ups, algo ha ido mal...</h1>
 <% end %>

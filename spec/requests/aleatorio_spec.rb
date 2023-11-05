@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "Aleatorios", type: :request do
-  describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
+  it "Verificar el acceso a la pagina de recetas aleatorias" do
+    stub_request(:any, /.*/).to_return(status: 200)
+    get aleatorias_path
+    expect(response).to have_http_status(:success)
   end
 end

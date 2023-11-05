@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe "MiLista", type: :request do
-  describe "GET /lista" do
-    it "returns http success" do
-      get "/mi_lista/lista"
-      expect(response).to have_http_status(:success)
-    end
-  end
+  include Devise::Test::IntegrationHelpers
 
+  it "Verificar el acceso a la pagina de lista del usuario" do
+    usuario = User.create(email: "rodrick@lol.ni", password: "12345678")
+    sign_in usuario
+    get mi_lista_path
+    expect(response).to have_http_status(:success)
+  end
 end

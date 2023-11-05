@@ -1,6 +1,7 @@
+<% provide(:titulo, "Busqueda") %>
 <h1>Resultados de la búsqueda</h1>
 
-<% if @resultados.any? %>
+<% if not @resultados.empty? %>
   <ul>
     <% @resultados.each do |receta| %>
       <li>

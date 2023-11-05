@@ -1,5 +1,6 @@
+<% provide(:titulo, "Home") %>
 <h1><b>Bienvenido a Tasty Base!!!<b></h1>
-<% if @recipe %>
+<% if not @recipe.empty? %>
     <%@recipe.each do |data|%>
         <h2><%= data["strMeal"] %></h2>
         <img src="<%= data["strMealThumb"] %>" alt="<%= data["strMeal"] %>">
