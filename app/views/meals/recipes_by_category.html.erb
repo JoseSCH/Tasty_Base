@@ -1,0 +1,17 @@
+<!-- app/views/meals/recipes_by_category.html.erb -->
+<% provide(:titulo, @name) %>
+<h1>Todas las Recetas de: <%= @name %></h1>
+
+<% if not @recipes.empty? %>
+<ul>
+  <% @recipes.each do |recipe| %>
+    <li><%= recipe['strMeal'] %></li>
+    <%= image_tag(recipe["strMealThumb"]) %><br>
+    <%= link_to "Detalles de la receta", show_details_path(id: recipe['idMeal']) %><br><br>
+  <% end %>
+</ul>
+<% else %>
+  <h1>Ups, algo ha ido mal</h1>
+<% end %>
+
+<%= link_to "Volver a las Categorías", categories_meals_path %>

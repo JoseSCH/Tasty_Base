@@ -1,0 +1,18 @@
+<!-- app/views/meals/categories.html.erb -->
+<% provide(:titulo, "Categorias") %>
+<h1>Categorías de Recetas</h1>
+
+<% if not @categorias.empty? %>
+  <ul>
+    <% @categorias.each do |data| %>
+      <li>
+        <h2><%= data["strCategory"] %></h2>
+        <%= image_tag(data["strCategoryThumb"]) %>
+        <%= simple_format(data["strCategoryDescription"]).gsub(/\n+/, "</br>").html_safe %>
+        <%= link_to "Ver todas las recetas", recipes_by_category_meals_path(category: data["strCategory"]) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <h1>Ups. algo ha ido mal...</h1>
+<% end %>

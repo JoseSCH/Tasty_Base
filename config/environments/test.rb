@@ -61,4 +61,9 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  #Para pruebas con usuarios.
+  config.email_for_testing = "rodrick@lol.ni"
+  config.password_for_testing = "12345678"
+  config.password_for_testing_fake = "87654321"
 end
