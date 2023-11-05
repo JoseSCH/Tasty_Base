@@ -1,0 +1,41 @@
+<% if not @recipe.empty? %>
+    <%@recipe.each do |data|%>
+        <% provide(:titulo, data["strMeal"]) %>
+        <h2><%= data["strMeal"] %></h2>
+        <img src="<%= data["strMealThumb"] %>" alt="<%= data["strMeal"] %>">
+        <h3>Categoria: <%= data["strCategory"] %></h3>
+        <h3>Origen: <%= data["strArea"] %></h3>
+        <table>
+            <tr>
+                <th>Ingredientes<th>
+            </tr>
+            <% for i in 1..20 %>
+                <% if data["strIngredient#{i}"] != "" and data["strIngredient#{i}"] != nil %>
+                    <tr>
+                        <td><%= image_tag(@ingredientesImg + data["strIngredient#{i}"] + "-Small.png") %></td>
+                        <td><%= data["strIngredient#{i}"] %></td>
+                        <td><%= data["strMeasure#{i}"] %></td>
+                    </tr>
+                <% else %>
+                    <% break %>
+                <% end %>
+            <% end %>
+        </table><br>
+        <h3>Instrucciones</h3>
+        <%#Para que muestre el texto correctamente. %>
+        <%= simple_format(data["strInstructions"]).gsub(/\n+/, "</br>").html_safe %><br>
+
+        <%# funcionalidad con botnes de agregar y borrar. solo si se esta loggeado%>
+
+        <% if signed_in? %>
+            <% if @existe %>
+                <%= button_to 'Eliminar de la lista', eliminar_item_path, params: {idMeal: data["idMeal"]}, disabled: false, data: { turbo_method: :delete, turbo_confirm: '¿Estás seguro?' } %>
+            <% else %>
+                <%= button_to 'Añadir a lista', guardar_item_path, params: {user_list: {user_id: current_user.id, idMeal: data["idMeal"], recipe_name: data["strMeal"], imgPreview: data["strMealThumb"] + "/preview"}}, disabled: false %>
+            <% end %>
+            <%= button_to 'Descargar receta', pdfizador_path(format: :pdf), params: {id: data["idMeal"]}, method: :get, download: true %>
+        <% end %>
+    <% end %>
+<% else %>
+    <h1>Ups, algo ha ido mal...</h1>
+<% end %>
