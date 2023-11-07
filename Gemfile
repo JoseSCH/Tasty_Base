@@ -2,11 +2,15 @@ source "https://rubygems.org"
 
 ruby "3.0.2"
 
-gem 'sass-rails'
-gem 'bootstrap-sass'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.1"
 
+
+gem 'sass-rails'
+
+gem 'bootstrap-sass'
+
+gem "font-awesome-sass"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
@@ -46,6 +50,9 @@ gem "bootsnap", require: false
 #Para trabajar con usuarios.
 gem "devise"
 
+#Para hacer posible la PDFizacion.
+gem "wicked_pdf"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -73,4 +80,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+
+  #Para tests con API
+  gem "webmock"
 end

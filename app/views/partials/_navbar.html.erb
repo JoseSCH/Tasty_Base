@@ -1,8 +1,11 @@
 <div id="navbar" class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <a id="logo" href="#">
-      <img src="#" alt="Logo">
-    </a>
+
+  
+    <button  class="btn navbar-toggler navbar-left" id="sidebar-toggle">
+      <i class="fa-solid fa-bars"></i> <!-- Utiliza la clase de Font Awesome para el ícono de Facebook -->
+    </button>
+
     <%= link_to "Inicio", root_path, class: "btn btn-link nav-link" %>
     <%= link_to "Categorias", categories_meals_path, class: "btn btn-link nav-link" %>
     <%= link_to "Recetas aleatorias", aleatorias_path, class: "btn btn-link nav-link" %>
@@ -14,14 +17,5 @@
       <%= submit_tag "Buscar", class: "btn btn-light nav-link" %>
     <% end %>
 
-    <% if signed_in? %>
-      <%= link_to "Mi Lista", mi_lista_path, class: "btn btn-link navbar-text nav-link" %>
-      <%= link_to "Salir", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: '¿Está seguro?' }, class: "btn btn-link navbar-link nav-link" %>
-      <%= link_to "Editar Cuenta", edit_user_registration_path, class: "btn btn-link navbar-link nav-link" %>
-      <%= link_to "Eliminar cuenta", registration_path(current_user), data: { turbo_method: :delete, turbo_confirm: "¿Está seguro que desea eliminar la cuenta?" }, class: "btn btn-link navbar-link nav-link" %>
-    <% else %>
-      <%= link_to "Registrarse", new_user_registration_path, class: "btn btn-link navbar-link nav-link" %>
-      <%= link_to "Ingresar", new_user_session_path, class: "btn btn-link navbar-link nav-link" %>
-    <% end %>
   </div>
 </div>

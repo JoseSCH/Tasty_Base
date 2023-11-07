@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "index/index.html.erb", type: :view do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "renderiza el titulo de la pagina." do
+    assign(:recipe, {})
+
+    render
+
+    expect(rendered).to have_content("Bienvenido a Tasty Base!!!")
+  end
 end

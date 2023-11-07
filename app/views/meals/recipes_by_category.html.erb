@@ -1,11 +1,20 @@
-<!-- app/views/meals/recipes_by_category.html.erb -->
+<% provide(:titulo, @name) %>
+<div id="recipe-title" class="text-center"> 
+  <h1>Todas las Recetas de: <%= @name %></h1>
+</div>
 
-<h1>Todas las Recetas de <%= @category %></h1>
-
-<ul>
-  <% @recipes.each do |recipe| %>
-    <li><%= link_to recipe['strMeal'], show_details_path(id: recipe['idMeal']) %></li>
-  <% end %>
-</ul>
+<% if not @recipes.empty? %>
+  <div class="recipe-grid"> <!-- Nuevo contenedor de la cuadrícula -->
+    <% @recipes.each do |recipe| %>
+      <div class="recipe-card"> <!-- Cada tarjeta de receta -->
+        <%= image_tag(recipe["strMealThumb"]) %>
+        <h2><%= recipe['strMeal'] %></h2>
+        <%= link_to "Detalles de la receta", show_details_path(id: recipe['idMeal']) %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <h1>Ups, algo ha ido mal</h1>
+<% end %>
 
 <%= link_to "Volver a las Categorías", categories_meals_path %>

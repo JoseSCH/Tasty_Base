@@ -1,19 +1,17 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import "bootstrap-sprockets"
+@import "bootstrap"
 
-/// Estilo para enlaces de navegación
-    .nav-link
+// Estilo para enlaces de navegación y botones
+.nav-link, .btn
   text-decoration: none
-  padding: 8px 16px
-  border: 1px solid #ccc
-  border-radius: 4px
-  color: #fff
-  background-color: #333
+  padding: 10px 20px // Ajusta el relleno vertical y horizontal según tus necesidades
   transition: background-color 0.3s
+  font-family: "Helvetica", cursive
+  font-size: 15px // Ajusta el tamaño de la fuente según tus necesidades
 
   &:hover
-    background-color: #555
+    background-color: #555 // Color de sombreado al pasar el mouse
 
 .btn.btn-light.nav-link
-  background-color: #fff
+  background-color: #ffffff
   color: #333

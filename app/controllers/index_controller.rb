@@ -10,7 +10,11 @@ class IndexController < ApplicationController
     # Realiza la solicitud a la API
     response = Net::HTTP.get(URI(api_url))
 
-    # Convierte la respuesta JSON en un objeto Ruby
-    @recipe = JSON.parse(response)['meals']
+    if not response.empty?
+      # Convierte la respuesta JSON en un objeto Ruby
+      @recipe = JSON.parse(response)['meals']
+    else
+      @recipe = ""
+    end
   end
 end

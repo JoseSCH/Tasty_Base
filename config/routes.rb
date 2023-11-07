@@ -31,6 +31,9 @@ Rails.application.routes.draw do
   #Eliminar desde al vista de la lista de cada usuario.
   delete 'mi_lista/delete_from_my_list', to: 'mi_lista#delete_from_my_list', via: :delete, as: 'eliminar_item_from'
 
+  #Para realizar la peticion de descargar el archivo PDF.
+  get 'pdfnizator/receta', as: 'pdfizador'
+
   # Defines the root path route ("/")
   # root "posts#index"
 end

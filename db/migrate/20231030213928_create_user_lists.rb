@@ -3,6 +3,7 @@ class CreateUserLists < ActiveRecord::Migration[7.1]
     create_table :user_lists do |t|
       t.string :idMeal
       t.string :recipe_name
+      t.string :imgPreview
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

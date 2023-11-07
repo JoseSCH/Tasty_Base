@@ -7,12 +7,17 @@ class MostrarDetallesController < ApplicationController
     id = params[:id]
     #Construir la URL.
     api_url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=#{id}"
+    @ingredientesImg = "https://www.themealdb.com/images/ingredients/"
 
     # Realiza la solicitud a la API
     response = Net::HTTP.get(URI(api_url))
 
-    # Convierte la respuesta JSON en un objeto Ruby
-    @recipe = JSON.parse(response)['meals']
+    if not response.empty?
+      # Convierte la respuesta JSON en un objeto Ruby
+      @recipe = JSON.parse(response)['meals']
+    else
+      @recipe = {}
+    end
 
     #Verifica si el cliente ha agregado esa receta a su lista.
     if signed_in?

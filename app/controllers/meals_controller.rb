@@ -4,25 +4,20 @@ class MealsController < ApplicationController
 
   def categories
     # Usa la caché para almacenar/recuperar los resultados
-    @recipes_by_category = Rails.cache.fetch('recipes_by_category', expires_in: 1.hour) do
-      categories = ["Beef", "Breakfast", "Chicken", "Dessert", "Goat", "Lamb", "Miscellaneous", "Pasta", "Pork", "Seafood", "Side", "Starter", "Vegan", "Vegetarian"]
-      result = {}
+    @categorias = Rails.cache.fetch("Categorias", expires_in: 1.hour) do
 
-      categories.each do |category|
-        # Construye la URL de la API para obtener recetas por categoría
-        api_url = "https://www.themealdb.com/api/json/v1/1/filter.php?c=#{category}"
+      # Construye la URL de la API para obtener recetas por categoría
+      api_url = "https://www.themealdb.com/api/json/v1/1/categories.php"
 
-        # Realiza la solicitud a la API
-        response = Net::HTTP.get(URI(api_url))
+      # Realiza la solicitud a la API
+      response = Net::HTTP.get(URI(api_url))
 
+      if not response.empty?
         # Convierte la respuesta JSON en un objeto Ruby
-        recipes = JSON.parse(response)['meals']
-
-        # Limita la cantidad de recetas a un máximo de 4
-        result[category] = recipes.take(4)
+        JSON.parse(response)['categories']
+      else
+        @categorias = ""
       end
-
-      result
     end
   end
 
@@ -32,12 +27,17 @@ class MealsController < ApplicationController
     @recipes = Rails.cache.fetch("recipes_by_category_#{category}", expires_in: 1.hour) do
       # Construye la URL de la API para obtener recetas por categoría
       api_url = "https://www.themealdb.com/api/json/v1/1/filter.php?c=#{category}"
+      @name = category
 
       # Realiza la solicitud a la API
       response = Net::HTTP.get(URI(api_url))
 
-      # Convierte la respuesta JSON en un objeto Ruby
-      JSON.parse(response)['meals']
+      if not response.empty?
+        # Convierte la respuesta JSON en un objeto Ruby
+        JSON.parse(response)['meals']
+      else
+        @recipes = ""
+      end
     end
   end
 end

@@ -3,7 +3,7 @@ class MiListaController < ApplicationController
 
   def lista
     #Listar las recetas que ha agregado el usuario.
-    @user_list = current_user.user_list
+    @user_list = current_user.user_list.order(:recipe_name)
   end
 
   #Crear item en lista.
@@ -51,6 +51,6 @@ class MiListaController < ApplicationController
 
   #Que parametros permitir.
   def recipe_params
-    params.require(:user_list).permit(:user_id, :idMeal, :recipe_name)
+    params.require(:user_list).permit(:user_id, :idMeal, :recipe_name, :imgPreview)
   end
 end

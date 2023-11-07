@@ -1,6 +1,7 @@
+<% provide(:titulo, "Busqueda") %>
 <h1>Resultados de la búsqueda</h1>
 
-<% if @resultados.any? %>
+<% if not @resultados.empty? %>
   <ul>
     <% @resultados.each do |receta| %>
       <li>
@@ -11,5 +12,5 @@
     <% end %>
   </ul>
 <% else %>
-  <h1>No se encontraron coincidencias.</h1>
+  <h1 style="color: black; text-transform: uppercase;">No se encontraron coincidencias.</h1>
 <% end %>
