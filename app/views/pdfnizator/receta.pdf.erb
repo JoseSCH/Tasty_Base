@@ -24,7 +24,7 @@
                         <th>Ingredientes<th>
                     </tr>
                     <% for i in 1..20 %>
-                        <% unless data["strIngredient#{i}"].empty? %>
+                    <% if data["strIngredient#{i}"] != "" and data["strIngredient#{i}"] != nil %>
                             <tr>
                                 <td><%= image_tag(@ingredientesImg + data["strIngredient#{i}"] + "-Small.png") %></td>
                                 <td><%= data["strIngredient#{i}"] %></td>

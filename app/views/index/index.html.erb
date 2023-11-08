@@ -1,11 +1,26 @@
 <% provide(:titulo, "Home") %>
-<h1><b>Bienvenido a Tasty Base!!!<b></h1>
-<% if not @recipe.empty? %>
-    <%@recipe.each do |data|%>
-        <h2><%= data["strMeal"] %></h2>
-        <img src="<%= data["strMealThumb"] %>" alt="<%= data["strMeal"] %>">
-        <%= link_to "Detalles", show_details_path(id: data["idMeal"]) %>
-    <% end %>
-<% else %>
-    <h2>No se pudo recuperar receta!!!</h2>
-<% end %>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+    <div class="content">
+    <h1><b>Bienvenido a Tasty Base!!!<b></h1>
+            <% if not @recipe.empty? %>
+            <% @recipe.each do |data| %>
+                <h2><%= data["strMeal"] %></h2>
+                <img src="<%= data["strMealThumb"] %>" alt="<%= data["strMeal"] %>">
+                <div class="button-container">
+                    <%= link_to "Detalles", show_details_path(id: data["idMeal"]), class: "button-detalles" %>
+                </div>
+
+            <% end %>
+        <% else %>
+            <h2>No se pudo recuperar receta!!!</h2>
+        <% end %>
+    </div>
+</body>
+</html>
+
