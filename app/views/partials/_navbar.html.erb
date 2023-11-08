@@ -2,7 +2,7 @@
   <div class="container">
 
   
-    <button  class="btn navbar-toggler navbar-left" id="sidebar-toggle">
+    <button  class="btn navbar-toggler navbar-left" id="sidebar-toggle" onclick="mostrarSideBar()">
       <i class="fa-solid fa-bars"></i> <!-- Utiliza la clase de Font Awesome para el ícono de Facebook -->
     </button>
 
@@ -19,3 +19,12 @@
 
   </div>
 </div>
+
+<script>
+
+// para activar el sidebar
+function mostrarSideBar() {
+  document.getElementById('sidebar').classList.toggle('active');
+}
+
+</script>
