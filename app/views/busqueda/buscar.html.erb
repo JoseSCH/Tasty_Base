@@ -1,16 +1,28 @@
 <% provide(:titulo, "Busqueda") %>
-<h1>Resultados de la búsqueda</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="buscar.css">
+</head>
+<body>
+    <div class="centered-container">
+        <h1>Resultados de la búsqueda</h1>
+        <% if not @resultados.empty? %>
+            <ul>
+                <% @resultados.each do |receta| %>
+                    <li>
+                        <h2><%= receta['strMeal'] %></h2>
+                        <%= image_tag(receta['strMealThumb'], alt: receta['strMeal']) %>
+                        <%= link_to "Detalles", show_details_path(id: receta["idMeal"]), class: "button-detalles" %>
+                    </li>
+                <% end %>
+            </ul>
+        <% else %>
+            <h1 style="color: black; text-transform: uppercase;">No se encontraron coincidencias.</h1>
+        <% end %>
+    </div>
+</body>
+</html>
 
-<% if not @resultados.empty? %>
-  <ul>
-    <% @resultados.each do |receta| %>
-      <li>
-        <h2><%= receta['strMeal'] %></h2>
-        <%= image_tag(receta['strMealThumb'], alt: receta['strMeal']) %>
-        <%= link_to "Detalles", show_details_path(id: receta["idMeal"])%>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <h1>No se encontraron coincidencias.</h1>
-<% end %>
+</html>
+

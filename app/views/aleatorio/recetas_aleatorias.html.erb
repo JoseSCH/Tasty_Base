@@ -1,12 +1,15 @@
 <% provide(:titulo, "Delicias al azar!!!") %>
-<h1>Recetas Aleatorias</h1>
+<div class="center-title">
+  <h1>Recetas Aleatorias</h1>
+</div>
 
-<ul>
+<div class="recipe-grid">
   <% @recetas_aleatorias.each do |receta| %>
-    <li>
-      <h2><%= receta['strMeal'] %></h2>
+    <div class="recipe-card">
       <%= image_tag(receta['strMealThumb'], alt: receta['strMeal']) %>
-      <%= link_to "Detalles", show_details_path(id: receta["idMeal"])%>
-    </li>
+      <h2><%= receta['strMeal'] %></h2>
+      <%= link_to "Detalles", show_details_path(id: receta["idMeal"]), class: "gray-button" %>
+    </div>
   <% end %>
-</ul>
+</div>
+
