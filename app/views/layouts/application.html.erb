@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TastyBase</title>
+    <title><%= tituloPagina(yield(:titulo)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,7 +10,13 @@
     <%= javascript_importmap_tags %>
   </head>
 
+  <%#Renderiza la barra de navegacion%>
+  <%= render partial: "partials/navbar" %>
+  <%= render partial:'partials/sidebar' %>
+  
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

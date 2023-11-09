@@ -1,0 +1,30 @@
+<div id="navbar" class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+
+  
+    <button  class="btn navbar-toggler navbar-left" id="sidebar-toggle" onclick="mostrarSideBar()">
+      <i class="fa-solid fa-bars"></i> <!-- Utiliza la clase de Font Awesome para el ícono de Facebook -->
+    </button>
+
+    <%= link_to "Inicio", root_path, class: "btn btn-link nav-link" %>
+    <%= link_to "Categorias", categories_meals_path, class: "btn btn-link nav-link" %>
+    <%= link_to "Recetas aleatorias", aleatorias_path, class: "btn btn-link nav-link" %>
+
+    <%= form_tag(buscar_path, method: :get, class: "navbar-form navbar-right") do %>
+      <div class="form-group">
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Buscar recetas..." %>
+      </div>
+      <%= submit_tag "Buscar", class: "btn btn-light nav-link" %>
+    <% end %>
+
+  </div>
+</div>
+
+<script>
+
+// para activar el sidebar
+function mostrarSideBar() {
+  document.getElementById('sidebar').classList.toggle('active');
+}
+
+</script>

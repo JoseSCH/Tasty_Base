@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tasty Base</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= wicked_pdf_stylesheet_link_tag "pdf" %>
+  </head>
+  <body>
+    <div id="header">
+        <h1>Tasty Base</h1>
+    </div>
+    <div id="main">
+        <% if @recipe %>
+            <%@recipe.each do |data|%>
+                <h2><%= data["strMeal"] %></h2>
+                <img src="<%= data["strMealThumb"] %>" alt="<%= data["strMeal"] %>">
+                <h3>Categoria: <%= data["strCategory"] %></h3>
+                <h3>Origen: <%= data["strArea"] %></h3>
+                <table>
+                    <tr>
+                        <th>Ingredientes<th>
+                    </tr>
+                    <% for i in 1..20 %>
+                    <% if data["strIngredient#{i}"] != "" and data["strIngredient#{i}"] != nil %>
+                            <tr>
+                                <td><%= image_tag(@ingredientesImg + data["strIngredient#{i}"] + "-Small.png") %></td>
+                                <td><%= data["strIngredient#{i}"] %></td>
+                                <td><%= data["strMeasure#{i}"] %></td>
+                            </tr>
+                        <% else %>
+                            <% break %>
+                        <% end %>
+                    <% end %>
+                </table><br>
+                <h3>Instrucciones</h3>
+                <%#Para que muestre el texto correctamente. %>
+                <%= simple_format(data["strInstructions"]).gsub(/\n+/, "</br>").html_safe %><br>
+            <% end %>
+        <% else %>
+            <h1>Algo a ido mal, intente mas tarde jaja salu2</h1>
+        <% end %>
+    </div>
+  </body>
+</html>
