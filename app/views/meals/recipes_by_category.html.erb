@@ -9,7 +9,7 @@
       <div class="recipe-card"> <!-- Cada tarjeta de receta -->
         <%= image_tag(recipe["strMealThumb"]) %>
         <h2><%= recipe['strMeal'] %></h2>
-        <%= link_to "Detalles de la receta", show_details_path(id: recipe['idMeal']) %>
+        <%= link_to "Detalles de la receta", show_details_path(id: recipe['idMeal']), class: "gray-button" %>
       </div>
     <% end %>
   </div>
@@ -17,4 +17,4 @@
   <h1>Ups, algo ha ido mal</h1>
 <% end %>
 
-<%= link_to "Volver a las Categorías", categories_meals_path %>
+<%= link_to "Volver a las Categorías", categories_meals_path, class: "gray-button2" %>

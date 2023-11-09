@@ -12,7 +12,7 @@
           <%= image_tag(data["strCategoryThumb"], class: "categoria-imagen") %>
           <div class="categoria-info">
             <%= simple_format(data["strCategoryDescription"]).gsub(/\n+/, "<br>").html_safe %>
-            <%= link_to "Ver todas las recetas", recipes_by_category_meals_path(category: data["strCategory"]) %>
+            <%= link_to "Ver todas las recetas", recipes_by_category_meals_path(category: data["strCategory"]), class: "gray-button" %>
           </div>
         </div>
       </li>
@@ -21,3 +21,4 @@
 <% else %>
   <h1>Ups. algo ha ido mal...</h1>
 <% end %>
+
